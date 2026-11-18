@@ -39,9 +39,25 @@ def sample_plan_params(rng: np.random.Generator) -> PlanParams:
     )
 
 
-def nominal_plan(p: PlanParams, T: int, max_lift_speed: float, control_dt: float) -> np.ndarray:
+REFERENCE_SLEW = 0.06  # gripper slew (per step) the nominal planner was designed for (H1-001)
+
+
+def slow_gripper_lift_delay(g_hold: float, slew: float | None, ref_slew: float = REFERENCE_SLEW) -> int:
+    """Extra steps a speed-aware planner waits before lifting with a gripper slower than
+    the reference, so that the grip has made the same progress at lift start as with
+    the reference gripper. Zero for the reference speed and faster grippers, so plans
+    there are identical to H1-001."""
+    if slew is None or slew >= ref_slew:
+        return 0
+    return int(max(0, np.ceil(g_hold / slew) - np.ceil(g_hold / ref_slew)))
+
+
+def nominal_plan(p: PlanParams, T: int, max_lift_speed: float, control_dt: float,
+                 slew: float | None = None) -> np.ndarray:
     """Open-loop plan: wait, ramp grip to g_hold, hold, lift at constant speed to
-    lift_height, then hold still."""
+    lift_height, then hold still. ``slew`` (optional) makes the plan speed-aware for
+    grippers slower than the reference (see ``slow_gripper_lift_delay``); the default
+    reproduces H1-001 exactly."""
     a = np.zeros((T, 2))
     g = np.zeros(T)
     for t in range(T):
@@ -52,7 +68,7 @@ def nominal_plan(p: PlanParams, T: int, max_lift_speed: float, control_dt: float
         else:
             g[t] = p.g_hold
     a[:, 0] = 2 * g - 1
-    lift_start = p.close_start + p.close_steps + p.hold_steps
+    lift_start = p.close_start + p.close_steps + p.hold_steps + slow_gripper_lift_delay(p.g_hold, slew)
     n_lift = int(np.ceil(p.lift_height / (p.lift_speed * max_lift_speed * control_dt)))
     a[lift_start:lift_start + n_lift, 1] = p.lift_speed
     return a
