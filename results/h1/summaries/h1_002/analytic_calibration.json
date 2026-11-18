@@ -1,0 +1,11 @@
+{
+  "kappa_hat": 7.493155430604737,
+  "g0_prior": 0.6000176831905726,
+  "n_points": 220,
+  "resid_rmse_N": 0.009216350728035741,
+  "seeds": [
+    90000000,
+    90000019
+  ],
+  "note": "fitted once at slew 0.06; kappa and g0 are properties of the finger servo/object geometry, not of slew"
+}

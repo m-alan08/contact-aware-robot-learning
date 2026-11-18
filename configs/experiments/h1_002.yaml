@@ -1,0 +1,33 @@
+# H1-002: is learned tactile forecasting necessary? (docs/experiments/H1-002_PROTOCOL.md)
+experiment_id: H1-002
+environment_config: configs/environments/gripper_lift.yaml
+predictor_config: configs/predictors/default.yaml
+T: 60
+K: 4
+H: 10
+predictor_seeds: [0, 1, 2, 3, 4]
+n_train_episodes: 2000      # identical budget to H1-001
+n_val_episodes: 300
+n_pred_test_episodes: 300
+# Closed-loop controller (identical to H1-001 H1-B)
+N_min: 1.7
+kappa: 7.5
+min_lift: 0.05
+correction_times: [10, 20, 30]
+# Grid (protocol section 7)
+slews: [0.03, 0.06, 0.12, 0.24]
+latencies: [0, 1, 2, 4]
+grip_decrease_magnitudes: [0.0, 0.1, 0.2, 0.3, 0.4]
+direction_block:
+  direction: lift_increase
+  magnitudes: [0.3, 0.6]
+  slews: [0.06]
+  latencies: [0, 2]
+n_trials_per_cell: 150
+reference_slew: 0.06
+h1_001_models: artifacts/h1/H1-001/models   # read-only reuse (corrected-trained, slew 0.06)
+pilot:
+  n_trials_per_cell: 5
+  slews: [0.03, 0.24]
+  latencies: [0, 4]
+  grip_decrease_magnitudes: [0.0, 0.3]
