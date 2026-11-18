@@ -25,3 +25,25 @@
 
 The raw per-trial tables (`h1a_trials.csv`, `h1a_trials.npz`, `h1b_episodes.csv`)
 are in `artifacts/h1/H1-001/` (git-ignored). Their checksums are in the manifests.
+
+## H1-002 (`figures/h1_002/`, `summaries/h1_002/`)
+
+| Figure | Shows |
+|---|---|
+| `fig1_success_by_controller.png` | Success of A–E and O vs. grip-decrease size at three settings |
+| `fig2_learned_vs_analytic.png` | B − D (learned vs. analytic) and B − E (corrected vs. nominal training) per speed × latency |
+| `fig3_forecast_training_distribution.png` | Forecast error by training distribution and speed; corrected-action forecasts on the H1-001 trials |
+| `fig4_benefit_vs_speed.png` | Anticipation benefit vs. gripper speed (latency 0) |
+| `fig5_benefit_vs_latency.png` | Anticipation benefit vs. sensing latency (slew 0.06) |
+| `fig6_interactions_magnitude_speed_latency.png` | Success vs. magnitude for every speed × latency cell |
+
+Summaries:
+* `grid_analysis.json`: every registered contrast and decision
+* `grid_cell_success.csv` and `grid_benefit_maps.csv`
+* `stage0_h1_001_reproduction.json`
+* `analytic_calibration.json`
+* `predictor_training.json`: per-checkpoint SHA-256
+* `stage1_*.csv`
+* `pilot_*`: exploratory only
+
+The raw tables are in `artifacts/h1/H1-002/` and are archived as the GitHub Release asset `h1-002-artifacts`.
