@@ -1,0 +1,20 @@
+# Parallel-jaw grasp-and-lift task (src/contact_learning/environments/gripper_lift.py).
+# Every field maps 1:1 to EnvConfig. Units: SI (s, m, N, kg).
+timestep: 0.002
+control_dt: 0.05          # 20 Hz control
+finger_kp: 150.0          # N/m per finger -> max squeeze ~3 N at full close on the box
+finger_damping: 4.0
+hand_kp: 4000.0
+hand_damping: 40.0
+hand_force_limit: 30.0
+max_lift_speed: 0.25      # m/s
+grip_slew_per_step: 0.06  # slow gripper servo: full stroke takes ~0.85 s
+z_min: 0.0
+z_max: 0.25
+box_half_size: 0.02
+pad_friction: 0.3
+noslip_iterations: 20
+mass_range: [0.05, 0.20]
+friction_range: [0.6, 1.0]
+force_noise_std: 0.02     # N
+contact_threshold: 0.1    # N

@@ -221,3 +221,22 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# ---- contact-aware-robot-learning project rules ----
+# Raw simulation outputs, datasets, and checkpoints live in artifacts/ (not versioned).
+artifacts/*
+!artifacts/README.md
+*.pt
+*.pth
+*.ckpt
+*.pkl
+*.npz
+*.h5
+*.mp4
+# Credentials
+.env
+.env.*
+!.env.example
+# OS / editor
+.DS_Store
+.claude/

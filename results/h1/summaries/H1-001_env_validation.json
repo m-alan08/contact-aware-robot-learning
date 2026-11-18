@@ -1,0 +1,921 @@
+{
+  "grip_sweep": {
+    "g": [
+      0.0,
+      0.04,
+      0.08,
+      0.12,
+      0.16,
+      0.2,
+      0.24,
+      0.28,
+      0.32,
+      0.36,
+      0.4,
+      0.44,
+      0.48,
+      0.52,
+      0.56,
+      0.6,
+      0.64,
+      0.68,
+      0.72,
+      0.76,
+      0.8,
+      0.84,
+      0.88,
+      0.92,
+      0.96,
+      1.0
+    ],
+    "normal_l": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.29972603314674606,
+      0.599451605093722,
+      0.8991776753730394,
+      1.1989037747027984,
+      1.4986299127563325,
+      1.7983560991969014,
+      2.098082343675603,
+      2.3978086558298974,
+      2.6975350452802345,
+      2.997261521627961
+    ],
+    "normal_r": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.29972604929512936,
+      0.5994525791641689,
+      0.8991786494446089,
+      1.1989047487781597,
+      1.4986308868370573,
+      1.7983570732845349,
+      2.098083317772175,
+      2.397809629936631,
+      2.6975360193983127,
+      2.997262495758778
+    ],
+    "expected_normal": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.30000000000000027,
+      0.6000000000000005,
+      0.8999999999999999,
+      1.2000000000000002,
+      1.5000000000000004,
+      1.7999999999999998,
+      2.1,
+      2.4000000000000004,
+      2.6999999999999997,
+      3.0
+    ],
+    "g_contact_expected": 0.6,
+    "max_abs_dev_from_expected_N": 0.0027384783720392214
+  },
+  "lift": {
+    "rows": [
+      {
+        "seed": 900,
+        "mass": 0.050801582934725545,
+        "friction": 0.617798604118118,
+        "held": true,
+        "weight_N": 0.4983635285896576,
+        "tangential_sum_N": 0.538286310152527,
+        "normal_l_N": 2.6226032333819145
+      },
+      {
+        "seed": 901,
+        "mass": 0.15849584187305482,
+        "friction": 0.9746538329464001,
+        "held": true,
+        "weight_N": 1.554844208774668,
+        "tangential_sum_N": 1.5963899798862686,
+        "normal_l_N": 2.6225974878642124
+      },
+      {
+        "seed": 902,
+        "mass": 0.08022623481503105,
+        "friction": 0.964003676997888,
+        "held": true,
+        "weight_N": 0.7870193635354547,
+        "tangential_sum_N": 0.827388268020099,
+        "normal_l_N": 2.6226022363460393
+      },
+      {
+        "seed": 903,
+        "mass": 0.0691353179322677,
+        "friction": 0.8757408186655447,
+        "held": true,
+        "weight_N": 0.6782174689155461,
+        "tangential_sum_N": 0.7184179315475862,
+        "normal_l_N": 2.6226026635969433
+      },
+      {
+        "seed": 904,
+        "mass": 0.0933947418800852,
+        "friction": 0.8504476717968941,
+        "held": true,
+        "weight_N": 0.9162024178436359,
+        "tangential_sum_N": 0.9567710394445721,
+        "normal_l_N": 2.6226016486648533
+      },
+      {
+        "seed": 905,
+        "mass": 0.19397496718133314,
+        "friction": 0.8993983164963943,
+        "held": true,
+        "weight_N": 1.9028944280488782,
+        "tangential_sum_N": 1.944977255189246,
+        "normal_l_N": 2.6225943153780236
+      },
+      {
+        "seed": 906,
+        "mass": 0.19122767901259474,
+        "friction": 0.6310680322211878,
+        "held": true,
+        "weight_N": 1.8759435311135546,
+        "tangential_sum_N": 1.9179848233699963,
+        "normal_l_N": 2.6225945834716655
+      },
+      {
+        "seed": 907,
+        "mass": 0.1502944212569392,
+        "friction": 0.6194253441410937,
+        "held": true,
+        "weight_N": 1.4743882725305737,
+        "tangential_sum_N": 1.515809734635689,
+        "normal_l_N": 2.622598131279771
+      },
+      {
+        "seed": 908,
+        "mass": 0.13486357494280948,
+        "friction": 0.8507149729997803,
+        "held": true,
+        "weight_N": 1.3230116701889612,
+        "tangential_sum_N": 1.3642003327492926,
+        "normal_l_N": 2.6225992489127496
+      },
+      {
+        "seed": 909,
+        "mass": 0.15064300636449415,
+        "friction": 0.7230800700954699,
+        "held": true,
+        "weight_N": 1.4778078924356877,
+        "tangential_sum_N": 1.5192347073840278,
+        "normal_l_N": 2.6225981045493487
+      },
+      {
+        "seed": 910,
+        "mass": 0.09103604760685428,
+        "friction": 0.8824241952422036,
+        "held": true,
+        "weight_N": 0.8930636270232406,
+        "tangential_sum_N": 0.9335965451663668,
+        "normal_l_N": 2.622601760297239
+      },
+      {
+        "seed": 911,
+        "mass": 0.11631933041137953,
+        "friction": 0.690564489852572,
+        "held": true,
+        "weight_N": 1.141092631335633,
+        "tangential_sum_N": 1.182004650356193,
+        "normal_l_N": 2.6226004281769115
+      },
+      {
+        "seed": 912,
+        "mass": 0.1987134799663439,
+        "friction": 0.6920162108337758,
+        "held": true,
+        "weight_N": 1.9493792384698336,
+        "tangential_sum_N": 1.9915460012804835,
+        "normal_l_N": 2.6225938120733754
+      },
+      {
+        "seed": 913,
+        "mass": 0.08643648974308597,
+        "friction": 0.6583940406655173,
+        "held": true,
+        "weight_N": 0.8479419643796734,
+        "tangential_sum_N": 0.8884049890970697,
+        "normal_l_N": 2.6226019701256593
+      },
+      {
+        "seed": 914,
+        "mass": 0.15856631088011316,
+        "friction": 0.6414351420052634,
+        "held": true,
+        "weight_N": 1.5555355097339103,
+        "tangential_sum_N": 1.5970822802590972,
+        "normal_l_N": 2.6225974822527442
+      },
+      {
+        "seed": 915,
+        "mass": 0.07639185037251038,
+        "friction": 0.6724016709821313,
+        "held": true,
+        "weight_N": 0.7494040521543269,
+        "tangential_sum_N": 0.7897148199448214,
+        "normal_l_N": 2.622602391021771
+      },
+      {
+        "seed": 916,
+        "mass": 0.07759500680820511,
+        "friction": 0.8210852549091973,
+        "held": true,
+        "weight_N": 0.7612070167884921,
+        "tangential_sum_N": 0.8015324790196849,
+        "normal_l_N": 2.622602350562218
+      },
+      {
+        "seed": 917,
+        "mass": 0.08250593730183563,
+        "friction": 0.8367651932729051,
+        "held": true,
+        "weight_N": 0.8093832449310076,
+        "tangential_sum_N": 0.8497865868219932,
+        "normal_l_N": 2.6226021441883614
+      },
+      {
+        "seed": 918,
+        "mass": 0.0892679556418945,
+        "friction": 0.616853907969103,
+        "held": true,
+        "weight_N": 0.8757186448469851,
+        "tangential_sum_N": 0.916224710384123,
+        "normal_l_N": 2.6226018422051767
+      },
+      {
+        "seed": 919,
+        "mass": 0.19268267055933097,
+        "friction": 0.9186221152691054,
+        "held": true,
+        "weight_N": 1.890216998187037,
+        "tangential_sum_N": 1.9322805109609273,
+        "normal_l_N": 2.622594441634509
+      }
+    ],
+    "n_held": 20,
+    "max_rel_err_tangential_vs_weight": 0.08010775121495908
+  },
+  "capacity": {
+    "rows": [
+      {
+        "seed": 950,
+        "g": 0.7,
+        "coulomb_pred_held": true,
+        "held": false,
+        "capacity_ratio": 1.008933881913265
+      },
+      {
+        "seed": 950,
+        "g": 0.75,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 1.5134008228698983
+      },
+      {
+        "seed": 950,
+        "g": 0.8,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 2.0178677638265317
+      },
+      {
+        "seed": 950,
+        "g": 0.85,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 2.5223347047831637
+      },
+      {
+        "seed": 951,
+        "g": 0.7,
+        "coulomb_pred_held": false,
+        "held": false,
+        "capacity_ratio": 0.6763545323269525
+      },
+      {
+        "seed": 951,
+        "g": 0.75,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 1.0145317984904292
+      },
+      {
+        "seed": 951,
+        "g": 0.8,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 1.3527090646539057
+      },
+      {
+        "seed": 951,
+        "g": 0.85,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 1.6908863308173816
+      },
+      {
+        "seed": 952,
+        "g": 0.7,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 1.410481065852746
+      },
+      {
+        "seed": 952,
+        "g": 0.75,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 2.1157215987791202
+      },
+      {
+        "seed": 952,
+        "g": 0.8,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 2.820962131705494
+      },
+      {
+        "seed": 952,
+        "g": 0.85,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 3.526202664631866
+      },
+      {
+        "seed": 953,
+        "g": 0.7,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 1.2971535350593804
+      },
+      {
+        "seed": 953,
+        "g": 0.75,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 1.9457303025890718
+      },
+      {
+        "seed": 953,
+        "g": 0.8,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 2.5943070701187625
+      },
+      {
+        "seed": 953,
+        "g": 0.85,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 3.2428838376484523
+      },
+      {
+        "seed": 954,
+        "g": 0.7,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 1.1574829448106638
+      },
+      {
+        "seed": 954,
+        "g": 0.75,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 1.7362244172159964
+      },
+      {
+        "seed": 954,
+        "g": 0.8,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 2.3149658896213285
+      },
+      {
+        "seed": 954,
+        "g": 0.85,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 2.8937073620266602
+      },
+      {
+        "seed": 955,
+        "g": 0.7,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 1.5157763081306428
+      },
+      {
+        "seed": 955,
+        "g": 0.75,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 2.2736644621959656
+      },
+      {
+        "seed": 955,
+        "g": 0.8,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 3.0315526162612874
+      },
+      {
+        "seed": 955,
+        "g": 0.85,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 3.789440770326608
+      },
+      {
+        "seed": 956,
+        "g": 0.7,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 1.3127685881559839
+      },
+      {
+        "seed": 956,
+        "g": 0.75,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 1.969152882233977
+      },
+      {
+        "seed": 956,
+        "g": 0.8,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 2.6255371763119695
+      },
+      {
+        "seed": 956,
+        "g": 0.85,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 3.281921470389961
+      },
+      {
+        "seed": 957,
+        "g": 0.7,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 1.124031014980708
+      },
+      {
+        "seed": 957,
+        "g": 0.75,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 1.6860465224710626
+      },
+      {
+        "seed": 957,
+        "g": 0.8,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 2.2480620299614174
+      },
+      {
+        "seed": 957,
+        "g": 0.85,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 2.810077537451771
+      },
+      {
+        "seed": 958,
+        "g": 0.7,
+        "coulomb_pred_held": false,
+        "held": false,
+        "capacity_ratio": 0.9939146789780915
+      },
+      {
+        "seed": 958,
+        "g": 0.75,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 1.4908720184671382
+      },
+      {
+        "seed": 958,
+        "g": 0.8,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 1.9878293579561843
+      },
+      {
+        "seed": 958,
+        "g": 0.85,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 2.4847866974452297
+      },
+      {
+        "seed": 959,
+        "g": 0.7,
+        "coulomb_pred_held": false,
+        "held": false,
+        "capacity_ratio": 0.9616389755801019
+      },
+      {
+        "seed": 959,
+        "g": 0.75,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 1.4424584633701538
+      },
+      {
+        "seed": 959,
+        "g": 0.8,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 1.9232779511602052
+      },
+      {
+        "seed": 959,
+        "g": 0.85,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 2.404097438950256
+      },
+      {
+        "seed": 960,
+        "g": 0.7,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 2.5833449084899884
+      },
+      {
+        "seed": 960,
+        "g": 0.75,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 3.875017362734985
+      },
+      {
+        "seed": 960,
+        "g": 0.8,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 5.16668981697998
+      },
+      {
+        "seed": 960,
+        "g": 0.85,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 6.458362271224973
+      },
+      {
+        "seed": 961,
+        "g": 0.7,
+        "coulomb_pred_held": false,
+        "held": false,
+        "capacity_ratio": 0.8189879421506625
+      },
+      {
+        "seed": 961,
+        "g": 0.75,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 1.2284819132259943
+      },
+      {
+        "seed": 961,
+        "g": 0.8,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 1.6379758843013261
+      },
+      {
+        "seed": 961,
+        "g": 0.85,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 2.047469855376657
+      },
+      {
+        "seed": 962,
+        "g": 0.7,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 1.1756775333594192
+      },
+      {
+        "seed": 962,
+        "g": 0.75,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 1.7635163000391294
+      },
+      {
+        "seed": 962,
+        "g": 0.8,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 2.351355066718839
+      },
+      {
+        "seed": 962,
+        "g": 0.85,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 2.939193833398549
+      },
+      {
+        "seed": 963,
+        "g": 0.7,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 1.67367951692087
+      },
+      {
+        "seed": 963,
+        "g": 0.75,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 2.510519275381306
+      },
+      {
+        "seed": 963,
+        "g": 0.8,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 3.3473590338417423
+      },
+      {
+        "seed": 963,
+        "g": 0.85,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 4.184198792302176
+      },
+      {
+        "seed": 964,
+        "g": 0.7,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 1.0430150033385988
+      },
+      {
+        "seed": 964,
+        "g": 0.75,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 1.5645225050078988
+      },
+      {
+        "seed": 964,
+        "g": 0.8,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 2.086030006677199
+      },
+      {
+        "seed": 964,
+        "g": 0.85,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 2.6075375083464976
+      },
+      {
+        "seed": 965,
+        "g": 0.7,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 1.7439521483329639
+      },
+      {
+        "seed": 965,
+        "g": 0.75,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 2.615928222499447
+      },
+      {
+        "seed": 965,
+        "g": 0.8,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 3.48790429666593
+      },
+      {
+        "seed": 965,
+        "g": 0.85,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 4.3598803708324105
+      },
+      {
+        "seed": 966,
+        "g": 0.7,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 1.3286213440353416
+      },
+      {
+        "seed": 966,
+        "g": 0.75,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 1.9929320160530133
+      },
+      {
+        "seed": 966,
+        "g": 0.8,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 2.6572426880706845
+      },
+      {
+        "seed": 966,
+        "g": 0.85,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 3.321553360088355
+      },
+      {
+        "seed": 967,
+        "g": 0.7,
+        "coulomb_pred_held": false,
+        "held": false,
+        "capacity_ratio": 0.876060435164952
+      },
+      {
+        "seed": 967,
+        "g": 0.75,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 1.3140906527474288
+      },
+      {
+        "seed": 967,
+        "g": 0.8,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 1.7521208703299052
+      },
+      {
+        "seed": 967,
+        "g": 0.85,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 2.1901510879123807
+      },
+      {
+        "seed": 968,
+        "g": 0.7,
+        "coulomb_pred_held": false,
+        "held": false,
+        "capacity_ratio": 0.8587813309857327
+      },
+      {
+        "seed": 968,
+        "g": 0.75,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 1.2881719964785998
+      },
+      {
+        "seed": 968,
+        "g": 0.8,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 1.7175626619714663
+      },
+      {
+        "seed": 968,
+        "g": 0.85,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 2.1469533274643324
+      },
+      {
+        "seed": 969,
+        "g": 0.7,
+        "coulomb_pred_held": false,
+        "held": false,
+        "capacity_ratio": 0.5664742182081283
+      },
+      {
+        "seed": 969,
+        "g": 0.75,
+        "coulomb_pred_held": false,
+        "held": false,
+        "capacity_ratio": 0.8497113273121929
+      },
+      {
+        "seed": 969,
+        "g": 0.8,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 1.1329484364162574
+      },
+      {
+        "seed": 969,
+        "g": 0.85,
+        "coulomb_pred_held": true,
+        "held": true,
+        "capacity_ratio": 1.4161855455203212
+      }
+    ],
+    "agreement": 0.9875
+  },
+  "determinism": {
+    "identical_repeat": true,
+    "identical_after_other_episode": true
+  },
+  "env_config": {
+    "timestep": 0.002,
+    "control_dt": 0.05,
+    "finger_kp": 150.0,
+    "finger_damping": 4.0,
+    "hand_kp": 4000.0,
+    "hand_damping": 40.0,
+    "hand_force_limit": 30.0,
+    "max_lift_speed": 0.25,
+    "grip_slew_per_step": 0.06,
+    "z_min": 0.0,
+    "z_max": 0.25,
+    "box_half_size": 0.02,
+    "pad_friction": 0.3,
+    "noslip_iterations": 20,
+    "mass_range": [
+      0.05,
+      0.2
+    ],
+    "friction_range": [
+      0.6,
+      1.0
+    ],
+    "force_noise_std": 0.02,
+    "contact_threshold": 0.1
+  },
+  "provenance": {
+    "git": {
+      "commit": "63526d5603e3d76ed20e8b8bade9b61193c344c9",
+      "branch": "claude/contact-aware-repo-setup-270ccd",
+      "dirty": false
+    },
+    "software": {
+      "python": "3.12.14",
+      "platform": "macOS-26.5-arm64-arm-64bit",
+      "mujoco": "4.0.1",
+      "numpy": "2.5.5",
+      "torch": "2.15.0",
+      "scipy": "1.18.1",
+      "matplotlib": "3.11.2",
+      "pandas": "3.1.1"
+    },
+    "hardware": {
+      "machine": "arm64",
+      "processor": "arm",
+      "cpu": "Apple M5"
+    }
+  }
+}
