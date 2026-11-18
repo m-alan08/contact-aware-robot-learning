@@ -71,3 +71,32 @@ def train_predictors(env: GripperLiftEnv, pred_seed: int, cfg: dict) -> tuple[di
         e = np.array(report["models"][name]["test_episode_mse"])
         report["models"][name]["test_frac_episodes_better_than_persistence"] = float((e < base).mean())
     return models, report
+
+
+def train_mlp_variant(env: GripperLiftEnv, pred_seed: int, cfg: dict, corrections: bool, speed_aware: bool = True):
+    """H1-002: train only the action-conditioned MLP on corrected (``corrections=True``)
+    or nominal-only (``False``) episodes. Episode seeds, architecture, and budget are
+    identical between the two variants; evaluation uses held-out corrected AND nominal
+    test episodes (seeds disjoint from training/validation)."""
+    T, K, H = cfg["T"], cfg["K"], cfg["H"]
+    seeding.set_global_seed(pred_seed)
+    t0 = time.time()
+    tr = generate_windows(env, seeding.train_seeds(pred_seed, cfg["n_train_episodes"]), T, K, H, corrections, speed_aware)
+    va = generate_windows(env, seeding.val_seeds(pred_seed, cfg["n_val_episodes"]), T, K, H, corrections, speed_aware)
+    test_seeds = seeding.test_seeds(cfg["n_pred_test_episodes"], seeding.TEST_BASE + 5_000_000)
+    te = {"corrected": generate_windows(env, test_seeds, T, K, H, True, speed_aware),
+          "nominal": generate_windows(env, test_seeds, T, K, H, False, speed_aware)}
+    check_disjoint(tr, va, te["corrected"])
+    m = MLPPredictor(K, H, True, seed=pred_seed, **cfg["predictor"]["mlp"]).fit(tr["X_hist"], tr["A_fut"], tr["Y"], val=va)
+    pers = PersistencePredictor(K, H)
+    rep = {"pred_seed": pred_seed, "corrections_in_training": corrections, "slew": env.cfg.grip_slew_per_step,
+           "n_train_windows": int(len(tr["Y"])), "epochs_run": len(m.history), "seconds": time.time() - t0,
+           "train_rmse": float(np.sqrt(((m.predict(tr["X_hist"][:20000], tr["A_fut"][:20000]) - tr["Y"][:20000]) ** 2).mean()))}
+    pv = m.predict(va["X_hist"], va["A_fut"])
+    rep["val_rmse"] = float(np.sqrt(((pv - va["Y"]) ** 2).mean()))
+    rep["val_rmse_persistence"] = float(np.sqrt(((pers.predict(va["X_hist"], va["A_fut"]) - va["Y"]) ** 2).mean()))
+    for k, d in te.items():
+        p = m.predict(d["X_hist"], d["A_fut"])
+        rep[f"test_{k}_rmse"] = float(np.sqrt(((p - d["Y"]) ** 2).mean()))
+        rep[f"test_{k}_normal_rmse"] = float(np.sqrt(((p[..., :2] - d["Y"][..., :2]) ** 2).mean()))
+    return m, rep, te
