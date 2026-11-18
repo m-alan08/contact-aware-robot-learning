@@ -181,7 +181,7 @@ def stage_train(cfg, overwrite, workers):
 
 # ----------------------------------------------------------------------------- Stage 1 forecast on H1-001 H1-A trials
 def stage_forecast(cfg, overwrite):
-    out = SUMM / "stage1_forecast_h1a_trials.csv"
+    out = ART / "stage1_forecast_h1a_trials.csv"  # per-trial raw table -> artifacts
     guard(out, overwrite)
     raw = np.load(REPO_ROOT / "artifacts" / "h1" / "H1-001" / "h1a_trials.npz")
     meta = pd.read_csv(REPO_ROOT / "artifacts" / "h1" / "H1-001" / "h1a_trials.csv")

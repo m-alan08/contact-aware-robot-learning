@@ -80,7 +80,7 @@ def stage1(cfg):
     nom_fail = P[(~P.corrections_in_training) & (P.val_rmse > P.val_rmse_persistence)] if "val_rmse" in P else P.iloc[:0]
     out["nominal_training_failures"] = nom_fail[["slew", "pred_seed"]].to_dict(orient="records")
 
-    F = pd.read_csv(SUMM / "stage1_forecast_h1a_trials.csv")
+    F = pd.read_csv(ART / "stage1_forecast_h1a_trials.csv")
     t = F.groupby(["seed", "family"]).agg(E=("E_refreshed", "mean"), En=("En_refreshed", "mean"), Enc=("En_cached", "mean"),
                                           kind=("kind", "first"), me=("magnitude_effective", "first")).reset_index()
     W = t.pivot(index="seed", columns="family", values=["E", "En", "Enc"])
@@ -126,7 +126,7 @@ def stage1(cfg):
     ax.set_xlabel("Gripper slew per step (0.06 = H1-001)")
     ax.set_ylabel("Held-out normal-force RMSE (N)\n(mean ± SD over 5 seeds)")
     ax.set_title("Forecast error by training distribution and speed", loc="left")
-    ax.legend(fontsize=6.5, loc="upper right")
+    ax.legend(fontsize=6.5, loc="upper center", bbox_to_anchor=(0.5, -0.22), ncol=2)
     ax = axes[1]
     kinds = ["grip_decrease", "grip_increase", "lift_increase", "lift_decrease"]
     xi = np.arange(len(labels) - 1)
@@ -333,7 +333,9 @@ def figures(df, T, Mp, cfg, which):
             d = T[np.isclose(T.slew, s) & (T.latency == l) & (T.direction == "grip_decrease")]
             for cond in ("C_live_only", "B_refreshed_learned", "D_refreshed_analytic", "A_cached_learned"):
                 g = d[d.condition == cond].sort_values("magnitude")
-                ax.plot(g.magnitude, g.success, color=C[cond], marker="o", ms=2.5, lw=1.3, label=LABEL[cond])
+                wide = cond == "C_live_only"  # drawn wide underneath: A and C coincide almost everywhere
+                ax.plot(g.magnitude, g.success, color=C[cond], marker="o", ms=2.5, lw=4.5 if wide else 1.3,
+                        alpha=0.45 if wide else 1.0, label=LABEL[cond], ls="-" if cond != "A_cached_learned" else "--")
             ax.set_title(f"slew {s:g}, {l * 50} ms", fontsize=7.5, loc="left")
             ax.set_ylim(-0.02, 1.02)
     for ax in axes[-1]:
