@@ -9,7 +9,7 @@ updated only from completed, registered experiments; see
 | H1 | After sufficiently large action corrections, forecasts conditioned on the original action become less accurate than refreshed forecasts, and this mismatch can reduce task success. | See split below |
 | H1-A | *(prediction component)* Correcting an action makes the original action-conditioned tactile forecast less accurate than a refreshed forecast. | **Preliminary support** (simulation, H1-001); limited to correction directions the predictor is sensitive to |
 | H1-B | *(control component)* This forecast mismatch can reduce task success. | **Preliminary support, narrow** (simulation, H1-001); one scenario with a slow gripper; the stale forecast was inert rather than misleading |
-| H2 | Under recoverable contact disturbances, selective intervention on an outdated forecast improves recovery when live tactile measurements are informative. | Not tested |
+| H2 | Under recoverable contact disturbances, selective intervention on an outdated forecast improves recovery when live tactile measurements are informative. | Not tested (H2-001 blocked at baseline gate, 2026-11-18) |
 | H3 | A selective update rule can retain the benefits of prediction in nominal conditions while improving disturbed-condition performance at a comparable computation and latency budget. | Not tested |
 
 The plan states: *"These hypotheses are conditional. We should drop or revise

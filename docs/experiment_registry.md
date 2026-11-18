@@ -7,6 +7,7 @@ invalidated ones. IDs are never reused. Status values: *planned*, *running*,
 | ID | Title | Hypothesis | Status | Primary outcome | Report |
 |---|---|---|---|---|---|
 | H1-001 | Action corrections, forecast mismatch, and closed-loop relevance | H1-A, H1-B | Completed 2026-11-17 | H1-A **preliminary support**: refreshed forecast error 0.18 N vs. cached 0.49 N for corrections ≥ 0.15 (D = +0.30 N [0.27, 0.34], 5/5 seeds), limited to grip corrections the predictor is sensitive to. H1-B **preliminary support, narrow**: event-triggered refresh raised success from 83.5% to 99.8% at a 0.3 grip decrease; live-only and fixed-rate refresh did no better than cached; analytic feed-forward untested. | [H1-001.md](experiments/H1-001.md) |
+| H2-001 | Causal interference between predicted and measured touch | H2 | **Blocked at baseline gate** 2026-11-18 (no experiment run) | None. Baseline audit found no public learned tactile policy with a forecast pathway, checkpoints, and a runnable evaluation environment on available compute. TacPAC selected as target architecture but unreproducible (no checkpoints/data, real-robot, multi-GPU). | [H2-001_BASELINE_SELECTION.md](experiments/H2-001_BASELINE_SELECTION.md) |
 
 ## Errata
 
