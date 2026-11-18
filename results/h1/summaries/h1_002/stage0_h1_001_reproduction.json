@@ -1,0 +1,28 @@
+{
+  "episodes_checked": 320,
+  "mismatches": [],
+  "reproduced": true,
+  "h1_001_table_sha256": "e788e46ef8e26325dc3ad5cf362b5e8df7148bee1edaecf868c7ae2c24a332f2",
+  "provenance": {
+    "git": {
+      "commit": "15f4a2e9e55dd34caf537a09aa278a9433fcda15",
+      "branch": "claude/h1-002-learned-forecast-necessity",
+      "dirty": true
+    },
+    "software": {
+      "python": "3.12.14",
+      "platform": "macOS-26.5-arm64-arm-64bit",
+      "mujoco": "4.0.1",
+      "numpy": "2.5.5",
+      "torch": "2.15.0",
+      "scipy": "1.18.1",
+      "matplotlib": "3.11.2",
+      "pandas": "3.1.1"
+    },
+    "hardware": {
+      "machine": "arm64",
+      "processor": "arm",
+      "cpu": "Apple M5"
+    }
+  }
+}

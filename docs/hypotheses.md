@@ -16,5 +16,14 @@ The plan states: *"These hypotheses are conditional. We should drop or revise
 them if the corresponding mismatch is absent, does not affect control, or can be
 explained by sensor noise or execution delay."*
 
+**H1-002 note (2026-11-18).**
+* H1-A: the mismatch also occurs for a non-learned analytic forecaster.
+* H1-B: the benefit of refreshing holds across 4 gripper speeds and 4 sensing latencies, with the
+  largest effect under sensing delay. It is fully obtained by a two-parameter analytic model, so
+  *learned* tactile forecasting is not shown to be necessary in this task.
+* H1-001's significance threshold was corrected to m ≥ 0.25 (erratum).
+
+See [`H1_002_RESULTS.md`](H1_002_RESULTS.md).
+
 Proposed revisions, if any, are recorded in `H1_PRELIMINARY_RESULTS.md` §7 and
 are clearly labelled as proposals; they do not replace the text above.

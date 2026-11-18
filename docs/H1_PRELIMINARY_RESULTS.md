@@ -9,6 +9,17 @@ simplified MuJoCo task. None of them are from a real robot.*
 corrections, forecasts conditioned on the original action become less accurate
 than refreshed forecasts, and this mismatch can reduce task success.*
 
+> **H1-002 UPDATE (2026-11-18). This box was added after H1-002; the H1-001 text below is not changed.**
+> H1-002 ([summary](H1_002_RESULTS.md), [report](experiments/H1-002.md)) tested whether the H1-B benefit needs a
+> *learned* forecast. A two-parameter **analytic** grip→force model with the known slew limit matched the
+> learned predictor in all 16 gripper-speed × sensing-latency settings (difference +0.003, CI [−0.000, +0.006]).
+> **The learned-forecasting contribution is therefore not established in this task.**
+> Anticipating the correction does matter across all settings, most strongly with sensing delay. Contrary
+> to §4–5 below, this is **not** a slow-gripper effect: the benefit is smallest for the slowest gripper and
+> remains for the fastest. The proposed next experiment in §8 was run as H1-002. The new recommendation is to
+> test learned vs. analytic anticipation on plants the analytic model cannot capture, or to move to H2 with a
+> forecast-dependent policy.
+
 ## 1. Executive summary
 
 > **ERRATUM (2026-11-18). This box was added after publication; the original text below is unchanged.**

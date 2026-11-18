@@ -11,15 +11,17 @@ The questions and hypotheses (original wording preserved) are in
 [`docs/research_questions.md`](docs/research_questions.md) and
 [`docs/hypotheses.md`](docs/hypotheses.md).
 
-## Current status (2026-11-17)
+## Current status (2026-11-18)
 
 | Hypothesis | Status | Where |
 |---|---|---|
 | **H1-A**: correcting an action makes the original-action forecast less accurate than a refreshed one | **Preliminary support** in simulation, limited to corrections the predictor is sensitive to | [H1 preliminary results](docs/H1_PRELIMINARY_RESULTS.md) |
 | **H1-B**: this mismatch can reduce task success | **Preliminary support, narrow**: one slow-gripper scenario; refreshing at the correction prevents drops that live feedback and fixed-rate refresh do not; a non-learned feed-forward alternative is untested | [H1-001 report](docs/experiments/H1-001.md) |
+| **H1-002**: is *learned* forecasting necessary? | **No, not in this task.** A two-parameter analytic grip→force model matched the learned predictor at every gripper speed and sensing latency. Anticipating corrections helps most with sensing delay and is not a slow-gripper artifact. | [H1-002 results](docs/H1_002_RESULTS.md), [report](docs/experiments/H1-002.md) |
 | H2, H3 | Not started (deliberately) | `experiments/h2`, `experiments/h3` |
 
-**Start here:** [`docs/H1_PRELIMINARY_RESULTS.md`](docs/H1_PRELIMINARY_RESULTS.md) is the readable summary.
+**Start here:** [`docs/H1_002_RESULTS.md`](docs/H1_002_RESULTS.md) (latest), then
+[`docs/H1_PRELIMINARY_RESULTS.md`](docs/H1_PRELIMINARY_RESULTS.md) (H1-001, with its 2026-11-18 erratum).
 [`docs/experiment_registry.md`](docs/experiment_registry.md) lists every experiment.
 
 All results so far come from a **simplified MuJoCo simulation**, not a robot.
@@ -92,6 +94,15 @@ macOS, see [`docs/reproducibility.md`](docs/reproducibility.md).
 ```
 
 Runs refuse to overwrite existing outputs unless `--overwrite` is passed.
+
+## Reproducing H1-002
+
+```bash
+gh release download h1-002-artifacts -R m-alan08/contact-aware-robot-learning   # H1-001 + H1-002 raw artifacts
+tar -xzf h1-001-artifacts.tar.gz && tar -xzf h1-002-artifacts.tar.gz
+.venv/bin/python experiments/h1/analyze_h1_002.py --which grid                   # figures + statistics from saved outputs
+# or rerun everything: see docs/experiments/H1-002.md §10 (~20 min on 8-10 cores)
+```
 
 ## Conventions for collaborators
 
