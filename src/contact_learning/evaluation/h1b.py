@@ -179,10 +179,14 @@ def summarize_h1b(df: pd.DataFrame, cfg: dict) -> dict:
         # Per-trial success, averaged over predictor seeds where applicable.
         per_trial = d.groupby(["seed", "condition"]).success.mean().unstack()
         for cond in CONDITIONS:
+            # Unit of analysis = trial. Repeated runs of one trial under different
+            # predictor seeds are averaged first, then a trial-bootstrap CI is taken.
+            # (A Wilson interval over all seed-replicated runs overstated n; see the
+            # H1-001 erratum.)
+            rec[f"success_{cond}"] = list(bootstrap_ci(per_trial[cond].values, seed=2))
             k = int(d[d.condition == cond].success.sum())
             n = int((d.condition == cond).sum())
-            p, lo, hi = wilson_ci(k, n)
-            rec[f"success_{cond}"] = [p, lo, hi]
+            rec[f"success_{cond}_wilson_all_runs_DEPRECATED"] = list(wilson_ci(k, n))
             rec[f"mean_forecasts_{cond}"] = float(d[d.condition == cond].n_forecasts.mean())
             rec[f"mean_action_diff_vs_cached_{cond}"] = float(d[d.condition == cond].action_diff_vs_cached.mean())
         for a, b in (("refreshed", "cached"), ("refreshed", "live_only"), ("fixed_rate", "cached"), ("oracle", "refreshed")):

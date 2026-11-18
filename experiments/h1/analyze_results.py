@@ -287,8 +287,8 @@ def analyze_env(eid: str):
             "lift_max_rel_err": v["lift"]["max_rel_err_tangential_vs_weight"], "determinism": v["determinism"]}
 
 
-def analyze_h1b(eid: str):
-    p = SUMM / f"{eid}_h1b_summary.json"
+def analyze_h1b(eid: str, summary_suffix: str = "", fig_suffix: str = ""):
+    p = SUMM / f"{eid}_h1b_summary{summary_suffix}.json"
     if not p.exists():
         return None
     s = json.load(open(p))
@@ -307,7 +307,7 @@ def analyze_h1b(eid: str):
     s["posthoc_uncontrolled"] = unc
     axes[0].plot(mags, [unc[str(m)][0] for m in mags], color=C["ink2"], ls=":", lw=1.5, label="No safety controller (post-hoc reference)")
     axes[0].set_xlabel("Grip-decrease correction magnitude (fraction of grip range)")
-    axes[0].set_ylabel("Task success rate (Wilson 95% CI)")
+    axes[0].set_ylabel("Task success rate (95% CI)")
     axes[0].set_title("Closed-loop success by forecast condition", loc="left")
     axes[0].legend(fontsize=7, loc="lower left")
     for k, (a, b, col, lab) in enumerate([("refreshed", "cached", C["refreshed"], "B − A (refresh vs. cached)"),
@@ -321,7 +321,7 @@ def analyze_h1b(eid: str):
     axes[1].set_title("Paired differences", loc="left")
     axes[1].legend(fontsize=7)
     fig.subplots_adjust(wspace=0.38)
-    savefig(fig, f"{eid}_fig6_closed_loop_success.png")
+    savefig(fig, f"{eid}_fig6_closed_loop_success{fig_suffix}.png")
     return s
 
 

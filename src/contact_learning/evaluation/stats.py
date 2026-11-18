@@ -37,10 +37,13 @@ def wilson_ci(k: int, n: int, alpha: float = 0.05):
 
 
 def mcnemar_exact_p(b: int, c: int) -> float:
-    """Exact McNemar test for paired binary outcomes (b, c = discordant counts)."""
+    """Exact McNemar test for paired binary outcomes (b, c = discordant counts).
+    With no discordant pairs the comparison was still performed and shows no
+    difference, so p = 1.0. (Returning NaN here silently removed such
+    comparisons from Holm families; see the H1-001 erratum.)"""
     n = b + c
     if n == 0:
-        return float("nan")
+        return 1.0
     return float(min(1.0, 2 * stats.binom.cdf(min(b, c), n, 0.5)))
 
 

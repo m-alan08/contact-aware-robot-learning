@@ -51,4 +51,6 @@ def test_stats_helpers():
     p, lo, hi = wilson_ci(5, 10)
     assert lo < 0.5 < hi
     assert mcnemar_exact_p(0, 10) < 0.01
+    assert mcnemar_exact_p(0, 0) == 1.0  # no discordance must stay in a Holm family
+    assert holm([mcnemar_exact_p(0, 0), mcnemar_exact_p(7, 0)])[1] == 2 * mcnemar_exact_p(7, 0)
     assert holm([0.01, 0.04, np.nan])[:2] == [0.02, 0.04]

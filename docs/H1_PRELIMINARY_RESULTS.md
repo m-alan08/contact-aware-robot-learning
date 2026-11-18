@@ -11,6 +11,25 @@ than refreshed forecasts, and this mismatch can reduce task success.*
 
 ## 1. Executive summary
 
+> **ERRATUM (2026-11-18). This box was added after publication; the original text below is unchanged.**
+> Two statistical errors in the H1-B analysis were found by an automated review on PR #1 and verified against the saved data
+> (`scripts/h1_001_erratum.py`, `results/h1/summaries/H1-001_h1b_summary_erratum.json`,
+> `results/h1/figures/H1-001_fig6_closed_loop_success_erratum.png`):
+> 1. **Holm family.** Comparisons with zero discordant pairs (m = 0.05, 0.1) returned NaN and were
+>    silently dropped from the Holm correction. With the registered family of all six non-zero magnitudes,
+>    B vs. A at **m = 0.20 has Holm p = 0.0625 (not significant)**; the original text reports 0.031.
+>    m = 0.25 (p = 1.5e-4) and m = 0.30 (p < 1e-8) remain significant in all 5 seeds.
+>    **Every statement below that B > A is significant "at m ≥ 0.2" should read "at m ≥ 0.25".**
+> 2. **Success-rate CIs.** Pooled success intervals for A/B/D treated seed-replicated runs of the same
+>    trial as independent (n = 1000 instead of 200), which made them too narrow (e.g. A at m = 0.3:
+>    [0.811, 0.857] → corrected [0.785, 0.885]). The corrected intervals use a trial-level bootstrap.
+>    The paired-difference CIs were already trial-level and are unaffected.
+>
+> **Effect on conclusions:** the registered H1-B criterion (significant in ≥ 1 magnitude for ≥ 4/5 seeds,
+> with a pooled CI excluding 0) is still met at m = 0.25 and 0.3, so the H1-B verdict
+> (*preliminary support, narrow*) is unchanged. The smallest magnitude with significant evidence is 0.25,
+> not 0.2. The code is fixed in `evaluation/stats.py` and `evaluation/h1b.py`.
+
 **What we tested.** In a simulated two-finger grasp-and-lift task, a small
 learned model predicts the next 0.5 s of pad contact forces from recent
 contact history and a proposed action chunk. We changed the action chunk after
