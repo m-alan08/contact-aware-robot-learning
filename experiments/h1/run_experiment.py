@@ -5,8 +5,8 @@
 Stages
     validate-env  contact-signal validation checks           -> results/h1/summaries/<id>_env_validation.json
     train         train predictor family for every seed        -> artifacts/h1/<id>/models/, summaries/<id>_predictors.json
-    h1a           paired cached-vs-refreshed forecast trials   -> artifacts/h1/<id>/h1a_trials.npz, summaries/<id>_h1a_trials.csv
-    h1b           closed-loop control relevance (see h1b.py)   -> artifacts/h1/<id>/h1b_*.npz, summaries/<id>_h1b_*.csv
+    h1a           paired cached-vs-refreshed forecast trials   -> artifacts/h1/<id>/h1a_trials.{npz,csv}, summaries/<id>_h1a_manifest.json
+    h1b           closed-loop control relevance (see h1b.py)   -> artifacts/h1/<id>/h1b_episodes.csv, summaries/<id>_h1b_summary.json
     all           validate-env, train, h1a, h1b
 
 Raw outputs live under artifacts/ (git-ignored); compact summaries under results/.
@@ -100,7 +100,7 @@ def load_models(cfg, seed):
 
 def stage_h1a(cfg, env, overwrite):
     eid, art, summ = paths(cfg)
-    out_csv = summ / f"{eid}_h1a_trials.csv"
+    out_csv = art / "h1a_trials.csv"  # per-trial raw table (large): artifacts, checksummed in manifest
     guard(out_csv, overwrite)
     hc = {**cfg["h1a"], "T": cfg["T"], "K": cfg["K"], "H": cfg["H"]}
     seeds = seeding.test_seeds(hc["n_trials"])
@@ -136,7 +136,9 @@ def stage_h1a(cfg, env, overwrite):
     write_json(summ / f"{eid}_h1a_manifest.json", {
         "experiment_id": eid, "n_trials": len(trials), "trial_seeds": [seeds[0], seeds[-1]],
         "predictor_seeds": cfg["predictor_seeds"], "raw_artifact": str(npz.relative_to(REPO_ROOT)),
-        "raw_sha256": sha256_file(npz), "raw_bytes": npz.stat().st_size, "config": cfg, "provenance": provenance()})
+        "raw_sha256": sha256_file(npz), "raw_bytes": npz.stat().st_size,
+        "trials_csv": str(out_csv.relative_to(REPO_ROOT)), "trials_csv_sha256": sha256_file(out_csv),
+        "trials_csv_bytes": out_csv.stat().st_size, "config": cfg, "provenance": provenance()})
     print(f"[h1a] wrote {out_csv.relative_to(REPO_ROOT)} ({len(res)} rows)")
 
 

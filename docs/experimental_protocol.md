@@ -82,10 +82,76 @@ error, whether a learned predictor actually achieves it on held-out data, which
 correction types and phases produce it, and whether refreshing ever *hurts*
 (for example, from out-of-distribution action inputs).
 
-## H1-B — does the mismatch affect control? (registered before the H1-B run)
+## H1-B — does the mismatch affect control? (registered 2026-11-17, before any H1-B trial was run)
 
-See the "H1-B" section below. It is added before any H1-B trial is run.
+**Scenario.** This is the same grasp-and-lift task. At a chunk boundary
+`t_c ∈ {10, 20, 30}`, chosen from those at which nominal grasp contact already
+exists, an upstream module issues a **persistent grip-decrease correction** of
+magnitude `m ∈ {0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3}`. The fraction `m` of the
+grip range is subtracted from the grip command for the rest of the episode. A
+contact-safety controller sits downstream of the correction. Its job is to keep
+the predicted and measured pad normal force at or above `N_min = 1.7 N`. This is
+the force needed to hold the heaviest, most slippery object in the training
+distribution: 1.96 N weight at μ = 0.6.
+
+**Controller (identical in every condition).** The grip command is
+`g(t) = g_corrected(t) + u_f + u_l`, clipped to [0, 1].
+* Live term (every step, **all** conditions): `u_l += max(0, N_min − N_meas(t)) / κ`,
+  where `N_meas` is the mean measured pad normal force and `κ = 7.5 N` per unit `g`
+  (the grip-to-force gain measured in environment validation).
+* Forecast term (only at forecast times): `u_f += max(0, N_min − min_k N̂(t+k)) / κ`,
+  where `N̂` is the mean predicted pad normal force over the H = 10 forecast steps
+  for the chunk about to be executed, including the current compensation.
+  Compensation is one-sided (it only increases grip).
+
+**Conditions (only the forecast source and timing differ):**
+* **A cached:** forecasts are made at chunk boundaries (`t ≡ 0 mod 10`)
+  *before* the correction arrives. At `t_c` the controller keeps the forecast
+  made for `A_orig`.
+* **B refreshed:** as A, plus one extra forecast at `t_c` for the corrected chunk.
+* **C live-only:** no forecast term (`u_f ≡ 0`).
+* **D fixed-rate:** forecasts every 5 steps (`t ≡ 0 mod 5`) for the committed
+  chunk, on a schedule that does not depend on when the correction occurs.
+* **E oracle (non-deployable):** as B, but `N̂` is the true future normal force,
+  obtained by simulating the chunk from a state snapshot.
+
+**Held constant:** episode seeds and initial states, plans, correction time and
+magnitude, the controller and its gains, the trained predictor (all 5 seeds, each
+trial run with every seed), the observation history, H, and the control rate.
+**Measured:** success, defined as the box raised ≥ 5 cm and both pads in contact
+at T = 60; minimum measured normal force after `t_c`; slip, the box displacement
+relative to the hand; number of forecasts; per-forecast latency; and the action
+difference between conditions, `Σ_t |g_B(t) − g_A(t)|`.
+
+**Primary comparison:** success of B vs. A, paired by trial. Within each
+magnitude and for each predictor seed separately, this is tested with an exact
+McNemar test. The pooled effect is the success-rate difference averaged over
+seeds, with a trial-cluster bootstrap 95% CI (trials are resampled; seeds stay
+together). The live-feedback (C) and oracle (E) conditions do not use the
+learned predictor, so they run once per trial. The live term and forecast term
+are active from `t_c` onward (the safety layer monitors the corrected stream);
+before `t_c` all conditions execute the same nominal plan. Secondary
+comparisons: B vs. C and D vs. A, with E as the upper bound.
+**"H1-B preliminary support"** requires: success(B) > success(A) with McNemar
+p < 0.05 (Holm across the non-zero magnitudes) in at least one magnitude for
+at least 4 of the 5 predictor seeds, with a pooled bootstrap CI that excludes 0;
+B ≥ C within CI (refreshing is not merely redundant with live feedback, or if it
+is, that is reported as the result); and A = B exactly at `m = 0`. If A and B
+do not differ, H1-B is "not supported under tested conditions". If B > A but
+C ≥ B, the conclusion is that the mismatch is harmful only relative to a stale
+plan, and live feedback alone suffices.
+
+**Known caveat, stated in advance.** The scenario was chosen because it is one
+where forecast staleness *could* matter: a slow gripper (slew limit) and a lift
+in progress. It is not a random sample of tasks. Live-feedback gains were set from
+the measured plant gain κ, not tuned on H1-B outcomes.
 
 ## Amendments
 
-(none yet)
+* **2026-11-17, H1-B, before the full H1-B run (smoke test only).** A smoke run
+  exposed a bug. At `t_c`, the refreshed and oracle conditions *added* the
+  deficit from the superseded pre-correction forecast on top of the refreshed
+  forecast's deficit. They now *replace* it, as the design text above specifies.
+  The superseded forecast still counts toward the forecast budget. No full
+  H1-B results existed when this was fixed. Smoke outputs were discarded.
+  A regression test was added (`tests/test_h1b_validity.py`).

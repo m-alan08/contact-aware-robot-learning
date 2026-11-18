@@ -1,0 +1,138 @@
+{
+  "experiment_id": "H1-001",
+  "n_trials": 2100,
+  "trial_seeds": [
+    50000000,
+    50002099
+  ],
+  "predictor_seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "raw_artifact": "artifacts/h1/H1-001/h1a_trials.npz",
+  "raw_sha256": "89c883f09b841881764c861f985d7a274720a111b6353d28573eea9485594680",
+  "raw_bytes": 8230926,
+  "config": {
+    "env": {
+      "timestep": 0.002,
+      "control_dt": 0.05,
+      "finger_kp": 150.0,
+      "finger_damping": 4.0,
+      "hand_kp": 4000.0,
+      "hand_damping": 40.0,
+      "hand_force_limit": 30.0,
+      "max_lift_speed": 0.25,
+      "grip_slew_per_step": 0.06,
+      "z_min": 0.0,
+      "z_max": 0.25,
+      "box_half_size": 0.02,
+      "pad_friction": 0.3,
+      "noslip_iterations": 20,
+      "mass_range": [
+        0.05,
+        0.2
+      ],
+      "friction_range": [
+        0.6,
+        1.0
+      ],
+      "force_noise_std": 0.02,
+      "contact_threshold": 0.1
+    },
+    "predictor": {
+      "ridge_alpha": 1.0,
+      "mlp": {
+        "hidden": 256,
+        "layers": 3,
+        "lr": 0.001,
+        "epochs": 40,
+        "batch": 512,
+        "weight_decay": 1e-05,
+        "patience": 6
+      }
+    },
+    "experiment_id": "H1-001",
+    "environment_config": "configs/environments/gripper_lift.yaml",
+    "predictor_config": "configs/predictors/default.yaml",
+    "T": 60,
+    "K": 4,
+    "H": 10,
+    "predictor_seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "n_train_episodes": 2000,
+    "n_val_episodes": 300,
+    "n_pred_test_episodes": 300,
+    "corrections_in_training": true,
+    "h1a": {
+      "n_trials": 2100,
+      "magnitudes": [
+        0.0,
+        0.02,
+        0.05,
+        0.1,
+        0.2,
+        0.3,
+        0.5
+      ],
+      "strata": [
+        "near_onset",
+        "uniform"
+      ]
+    },
+    "h1b": {
+      "n_trials_per_magnitude": 200,
+      "magnitudes": [
+        0.0,
+        0.05,
+        0.1,
+        0.15,
+        0.2,
+        0.25,
+        0.3
+      ],
+      "correction_times": [
+        10,
+        20,
+        30
+      ],
+      "N_min": 1.7,
+      "kappa": 7.5,
+      "fixed_rate_period": 5,
+      "min_lift": 0.05
+    }
+  },
+  "provenance": {
+    "git": {
+      "commit": "63526d5603e3d76ed20e8b8bade9b61193c344c9",
+      "branch": "claude/contact-aware-repo-setup-270ccd",
+      "dirty": true
+    },
+    "software": {
+      "python": "3.12.14",
+      "platform": "macOS-26.5-arm64-arm-64bit",
+      "mujoco": "4.0.1",
+      "numpy": "2.5.5",
+      "torch": "2.15.0",
+      "scipy": "1.18.1",
+      "matplotlib": "3.11.2",
+      "pandas": "3.1.1"
+    },
+    "hardware": {
+      "machine": "arm64",
+      "processor": "arm",
+      "cpu": "Apple M5"
+    }
+  },
+  "trials_csv": "artifacts/h1/H1-001/h1a_trials.csv",
+  "trials_csv_sha256": "e0af6756b22d4c49f7396935b595cb0230f77f484a3d9254887891ae758d35a0",
+  "trials_csv_bytes": 17822662,
+  "note": "trials CSV was originally written to results/h1/summaries/ by the run at commit 63526d5 and relocated (unchanged) to artifacts/ because it is a 17 MB raw per-trial table. The provenance dirty flag reflects uncommitted files that are not on the H1-A code path (h1b.py, analyze_results.py, docs, the h1b config section); verified with git diff 63526d5..5e6dfea."
+}
