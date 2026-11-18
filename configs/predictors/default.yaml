@@ -1,0 +1,10 @@
+# Predictor family trained for every predictor seed.
+ridge_alpha: 1.0
+mlp:
+  hidden: 256
+  layers: 3
+  lr: 0.001
+  epochs: 40
+  batch: 512
+  weight_decay: 1.0e-5
+  patience: 6

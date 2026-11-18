@@ -1,0 +1,17 @@
+# H1-001: action corrections and forecast mismatch (H1-A), plus the closed-loop
+# relevance test (H1-B, stage "h1b").
+experiment_id: H1-001
+environment_config: configs/environments/gripper_lift.yaml
+predictor_config: configs/predictors/default.yaml
+T: 60          # control steps per episode (3 s)
+K: 4           # history length (steps)
+H: 10          # forecast / action-chunk horizon (steps, 0.5 s)
+predictor_seeds: [0, 1, 2, 3, 4]
+n_train_episodes: 2000
+n_val_episodes: 300
+n_pred_test_episodes: 300
+corrections_in_training: true
+h1a:
+  n_trials: 2100
+  magnitudes: [0.0, 0.02, 0.05, 0.1, 0.2, 0.3, 0.5]
+  strata: [near_onset, uniform]
