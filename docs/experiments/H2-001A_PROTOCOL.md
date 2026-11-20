@@ -413,4 +413,12 @@ No GPU, cluster, or paid infrastructure is used.
 
 ## 12. Amendments
 
-*(None yet.)*
+**A1 — 2026-11-20 (process note; no change to design or analysis).**
+
+* After L = 1, seed 0 finished, `analyze_h2_001a.py` was run once on that
+  seed's held-out records, only to check the pipeline on real data. Its output
+  was deleted. No setting, threshold, model, or analysis step was changed
+  afterwards.
+* After the full run, Figure 3 was redrawn so its lines do not join the
+  sampled recoverable (≤ 0.85) and unrecoverable (≥ 1.05) severity ranges.
+  This is cosmetic: no numbers changed.

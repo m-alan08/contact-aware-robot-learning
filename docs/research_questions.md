@@ -23,6 +23,8 @@ informative live feedback, and can selectively reducing their influence improve
 recovery? → **H2**. H2-001 baseline audit (2026-11-18): blocked, no runnable
 learned tactile policy with a forecast pathway; see
 [`experiments/H2-001_BASELINE_SELECTION.md`](experiments/H2-001_BASELINE_SELECTION.md).
+H2-001A (2026-11-20, local MuJoCo): stale forecasts did not override live touch in a
+learned imitation policy, which barely used its forecast; see [`H2_001A_RESULTS.md`](H2_001A_RESULTS.md).
 
 ## Alternatives and supporting questions (§5, not in current scope)
 
