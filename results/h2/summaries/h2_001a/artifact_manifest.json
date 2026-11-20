@@ -7,7 +7,8 @@
   "release_tag": "h2-001a-artifacts",
   "repo": "m-alan08/contact-aware-robot-learning (private)",
   "retrieve": "gh release download h2-001a-artifacts --repo m-alan08/contact-aware-robot-learning --pattern h2-001a-artifacts.tar.gz && shasum -a 256 h2-001a-artifacts.tar.gz && tar -xzf h2-001a-artifacts.tar.gz -C artifacts/",
-  "verified_after_upload": null
+  "verified_after_upload": "2026-11-20: downloaded from release h2-001a-artifacts (target 339c2da); archive SHA-256 matched; extracted L1/seed0/records.pkl SHA-256 matched this manifest",
+  "release_url": "https://github.com/m-alan08/contact-aware-robot-learning/releases/tag/h2-001a-artifacts"
  },
  "contents": "models.pkl (forecaster, policy_p, policy_d weights + training history), calib.pkl (theta, Mahalanobis reference, shuffle pool), records.pkl (per-episode, per-condition outcomes with action probes) for latency in {1,3} x student seed in {0..4}; bench.json; provenance.json; log.txt; main_stdout.txt",
  "seed_manifest": {
