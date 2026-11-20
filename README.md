@@ -11,13 +11,14 @@ The questions and hypotheses (original wording preserved) are in
 [`docs/research_questions.md`](docs/research_questions.md) and
 [`docs/hypotheses.md`](docs/hypotheses.md).
 
-## Current status (2026-11-17)
+## Current status (2026-11-20)
 
 | Hypothesis | Status | Where |
 |---|---|---|
 | **H1-A**: correcting an action makes the original-action forecast less accurate than a refreshed one | **Preliminary support** in simulation, limited to corrections the predictor is sensitive to | [H1 preliminary results](docs/H1_PRELIMINARY_RESULTS.md) |
 | **H1-B**: this mismatch can reduce task success | **Preliminary support, narrow**: one slow-gripper scenario; refreshing at the correction prevents drops that live feedback and fixed-rate refresh do not; a non-learned feed-forward alternative is untested | [H1-001 report](docs/experiments/H1-001.md) |
-| H2, H3 | Not started (deliberately) | `experiments/h2`, `experiments/h3` |
+| **H2**: selective intervention on an outdated forecast improves recovery when live touch is informative | **Contradicted in a local test** (H2-001A): a learned imitation policy's forecast went stale after disturbances but barely affected its actions; refreshing, suppressing-on-disagreement and random gating did not improve recovery, and a simple reactive grip rule beat every learned variant. The TacPAC-style test on ManiFeel (H2-001) is postponed, not abandoned | [H2-001A results](docs/H2_001A_RESULTS.md), [H2-001 audit](docs/experiments/H2-001_BASELINE_SELECTION.md) |
+| H3 | Not started | `experiments/h3` |
 
 **Start here:** [`docs/H1_PRELIMINARY_RESULTS.md`](docs/H1_PRELIMINARY_RESULTS.md) is the readable summary.
 [`docs/experiment_registry.md`](docs/experiment_registry.md) lists every experiment.
@@ -56,11 +57,14 @@ src/contact_learning/
   predictors/              features (explicit I/O), data generation, models, training
   controllers/             nominal planner and action corrections
   evaluation/              rollouts, H1-A paired trials, H1-B closed loop, metrics, stats
+  h2/                      TacPAC-structured forecast/corrector heads for the ManiFeel route (H2-001)
+  h2a/                     H2-001A: disturbed-hold env, teacher, forecaster, students, harness, stats
   utils/                   config, seeding, provenance
 configs/                   YAML: environments/, predictors/, experiments/
 experiments/h1/            run_experiment.py, analyze_results.py
-experiments/h2, h3/        placeholders (not started)
-results/h1/                version-controlled figures/ and summaries/ (small)
+experiments/h2/            h2_001a.py (train/calibrate/eval), analyze_h2_001a.py
+experiments/h3/            placeholder (not started)
+results/h1/, results/h2/   version-controlled figures/ and summaries/ (small)
 artifacts/                 raw outputs and checkpoints (git-ignored; checksums in summaries)
 tests/                     sanity and validity tests (pytest)
 ```

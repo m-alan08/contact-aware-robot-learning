@@ -1,0 +1,205 @@
+{
+ "experiment": "H2-001A",
+ "archive": {
+  "name": "h2-001a-artifacts.tar.gz",
+  "bytes": 38801477,
+  "sha256": "7daa6ed81cdff7a7d1e4d0eacfe3bc674aa861119ba965ec49c58e968e8c0dd5",
+  "release_tag": "h2-001a-artifacts",
+  "repo": "m-alan08/contact-aware-robot-learning (private)",
+  "retrieve": "gh release download h2-001a-artifacts --repo m-alan08/contact-aware-robot-learning --pattern h2-001a-artifacts.tar.gz && shasum -a 256 h2-001a-artifacts.tar.gz && tar -xzf h2-001a-artifacts.tar.gz -C artifacts/",
+  "verified_after_upload": "2026-11-20: downloaded from release h2-001a-artifacts (target 339c2da); archive SHA-256 matched; extracted L1/seed0/records.pkl SHA-256 matched this manifest",
+  "release_url": "https://github.com/m-alan08/contact-aware-robot-learning/releases/tag/h2-001a-artifacts"
+ },
+ "contents": "models.pkl (forecaster, policy_p, policy_d weights + training history), calib.pkl (theta, Mahalanobis reference, shuffle pool), records.pkl (per-episode, per-condition outcomes with action probes) for latency in {1,3} x student seed in {0..4}; bench.json; provenance.json; log.txt; main_stdout.txt",
+ "seed_manifest": {
+  "forecaster": "200000000 + 1e6*s + i",
+  "P_dagger": "210000000 + 1e6*s + 1e4*iter + i",
+  "D_dagger": "220000000 + 1e6*s + 1e4*iter + i",
+  "validation": "230000000 + 1e6*s + i (+500000 for forecaster val)",
+  "development": "240000000 + i (theta/OOD: +i<150; shuffle pool: 240100000 + i<100)",
+  "held_out_eval": "250000000 + i, i < 770 (200 nominal; then per kind load, push, friction: 150 recoverable, 40 unrecoverable)",
+  "student_seeds": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "latencies": [
+   1,
+   3
+  ]
+ },
+ "files": [
+  {
+   "path": "h2_001a/L1/seed0/calib.pkl",
+   "bytes": 641970,
+   "sha256": "855b0574f383b801113472b8188c0757ee646dc7cb00974f8879abed093273d3"
+  },
+  {
+   "path": "h2_001a/L1/seed0/models.pkl",
+   "bytes": 3672762,
+   "sha256": "fe5004bbb51f6ac07c3fe30af0a3bf9791f49b47fe494196a8140e2ea8751377"
+  },
+  {
+   "path": "h2_001a/L1/seed0/records.pkl",
+   "bytes": 4190708,
+   "sha256": "19855035a3cbffe46ee9f96be7ba4390602466274a8faf2815ac8d9824b7c34d"
+  },
+  {
+   "path": "h2_001a/L1/seed1/calib.pkl",
+   "bytes": 641970,
+   "sha256": "639095d0fb63187a5c58c059a0f493935ed4dd2596759a322680fd39c63f3992"
+  },
+  {
+   "path": "h2_001a/L1/seed1/models.pkl",
+   "bytes": 3672762,
+   "sha256": "247a38865b8364f3f503231881ca3073563e99c386af434b6c43882941a602ac"
+  },
+  {
+   "path": "h2_001a/L1/seed1/records.pkl",
+   "bytes": 4190582,
+   "sha256": "b0d3ae3c52c64d6cf6921f9930575636d05bd87f4e7e85e88accfcd8e7198872"
+  },
+  {
+   "path": "h2_001a/L1/seed2/calib.pkl",
+   "bytes": 641970,
+   "sha256": "e333528c0dc5342762e82e2a68dda431991173b336aa5dfae4f90c9564468327"
+  },
+  {
+   "path": "h2_001a/L1/seed2/models.pkl",
+   "bytes": 3672762,
+   "sha256": "0dbb215dd169b4b25746794b8cd5892e3f6d96e45c7e52bc8f019d345900cdce"
+  },
+  {
+   "path": "h2_001a/L1/seed2/records.pkl",
+   "bytes": 4190694,
+   "sha256": "82f8ab6a6fbbab8403450a25834e3c7d6b522bc4fb50c743b9202cd8446dbd9f"
+  },
+  {
+   "path": "h2_001a/L1/seed3/calib.pkl",
+   "bytes": 641970,
+   "sha256": "b4aac4ff121e541375cab27a5c1f855ec09080599ddb98800d8222a469f22a34"
+  },
+  {
+   "path": "h2_001a/L1/seed3/models.pkl",
+   "bytes": 3672762,
+   "sha256": "caf4ad2e0f1caef49865a6347734d67958f02da2bdedeed72b308e374219895e"
+  },
+  {
+   "path": "h2_001a/L1/seed3/records.pkl",
+   "bytes": 4190785,
+   "sha256": "1577ad90888493add9b33c0d7a03e90981093234820d9cdcb26717f860ddbefe"
+  },
+  {
+   "path": "h2_001a/L1/seed4/calib.pkl",
+   "bytes": 641970,
+   "sha256": "99fc0dc72279e805767d16134bb23c1d1fea44c80af8dde514843ecf2aa56e42"
+  },
+  {
+   "path": "h2_001a/L1/seed4/models.pkl",
+   "bytes": 3672762,
+   "sha256": "617b18b15028b10ee3a8c96c31ae8d4dbe136eace135bd13d964dc20760db4a2"
+  },
+  {
+   "path": "h2_001a/L1/seed4/records.pkl",
+   "bytes": 4190652,
+   "sha256": "9281c9aaf6faaecec303760a726654492ddc16a9df36f5fcb1073039428b9f6c"
+  },
+  {
+   "path": "h2_001a/L3/seed0/calib.pkl",
+   "bytes": 641970,
+   "sha256": "59ed03c7150e44b3cbc6ba84b83c2a50011850e93eb1c7e646ccc157d1fe4d93"
+  },
+  {
+   "path": "h2_001a/L3/seed0/models.pkl",
+   "bytes": 3672762,
+   "sha256": "aabcd3261039bd7b8e1a5273003595d4bd532077705d7875811082364a432a09"
+  },
+  {
+   "path": "h2_001a/L3/seed0/records.pkl",
+   "bytes": 4189938,
+   "sha256": "d285352e45612013fe299e2bd4fe90d1ed4d81ac79c704e907d705a3c5b2d96a"
+  },
+  {
+   "path": "h2_001a/L3/seed1/calib.pkl",
+   "bytes": 641970,
+   "sha256": "22bf2ced5c4f4be3fa6350706d0c4a62b7c7438edc445f6ae1ea1a9079a75760"
+  },
+  {
+   "path": "h2_001a/L3/seed1/models.pkl",
+   "bytes": 3672762,
+   "sha256": "4fb610939e86ea68e8b253c8c038d23b01b045663dd342dac62499e3d3a9bc73"
+  },
+  {
+   "path": "h2_001a/L3/seed1/records.pkl",
+   "bytes": 4190015,
+   "sha256": "7009fe6b2624c9a80ce975d9e3e4068a9b0482765db54635157a57a8c32950d7"
+  },
+  {
+   "path": "h2_001a/L3/seed2/calib.pkl",
+   "bytes": 641970,
+   "sha256": "72d47376057cda2d7e9eea722c80b6fbfa8b0222dcc9e37943ab9b9a1ab2ee6f"
+  },
+  {
+   "path": "h2_001a/L3/seed2/models.pkl",
+   "bytes": 3672762,
+   "sha256": "8ae00a83d212b6e60ad96b9a9b5d579d62e682a238c27d92e7b702d48c260e2d"
+  },
+  {
+   "path": "h2_001a/L3/seed2/records.pkl",
+   "bytes": 4189882,
+   "sha256": "23e20c6ac247e7497a6431e5b8e62f61fbcd7a5f24954dd5790d69a1077e3502"
+  },
+  {
+   "path": "h2_001a/L3/seed3/calib.pkl",
+   "bytes": 641970,
+   "sha256": "6e51e87979f46c6f95721797a87143e242997d67c169079d32d3bef099198398"
+  },
+  {
+   "path": "h2_001a/L3/seed3/models.pkl",
+   "bytes": 3672762,
+   "sha256": "81602fe2fce70f3d1ded44c5be2bf072cd915de12ae344927273ac584ddffb34"
+  },
+  {
+   "path": "h2_001a/L3/seed3/records.pkl",
+   "bytes": 4189889,
+   "sha256": "ad0be58514dfba71bd58bf5b85dbe2c4b34497570f6c6d5f34de761159e9846f"
+  },
+  {
+   "path": "h2_001a/L3/seed4/calib.pkl",
+   "bytes": 641970,
+   "sha256": "3e545ab226d58df8d3044d59ebbf562030b746d99806b77255580ac5141e397a"
+  },
+  {
+   "path": "h2_001a/L3/seed4/models.pkl",
+   "bytes": 3672762,
+   "sha256": "9ef218685424c8551408e9a1ad65cfda8a1ff71d69e9750c630f03571b6edba2"
+  },
+  {
+   "path": "h2_001a/L3/seed4/records.pkl",
+   "bytes": 4189980,
+   "sha256": "79f496bf309df16b42ce39770b27aa96be9e96ccc672655e21cbd27924690f0d"
+  },
+  {
+   "path": "h2_001a/bench.json",
+   "bytes": 490,
+   "sha256": "626180071670192fb972c6c9643cd1950b732478135db3facbd79d4a3ec94fc3"
+  },
+  {
+   "path": "h2_001a/log.txt",
+   "bytes": 11314,
+   "sha256": "70b5b2d0414949d5b5b56e7e9fef512d2446dae52661770eae8cb80cedc00fd3"
+  },
+  {
+   "path": "h2_001a/main_stdout.txt",
+   "bytes": 11314,
+   "sha256": "70b5b2d0414949d5b5b56e7e9fef512d2446dae52661770eae8cb80cedc00fd3"
+  },
+  {
+   "path": "h2_001a/provenance.json",
+   "bytes": 1524,
+   "sha256": "248f3bc5247fbd03359a2cf13c03216790a6a1ae4e2d925c73c3a7a7ada5b4d0"
+  }
+ ]
+}
