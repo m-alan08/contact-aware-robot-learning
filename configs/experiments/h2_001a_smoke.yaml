@@ -1,0 +1,42 @@
+# Pipeline smoke test only; outputs are not results.
+experiment_id: H2-001A-smoke
+latencies:
+- 1
+student_seeds:
+- 0
+env:
+  T: 80
+  min_lift_frac: 0.5
+  slip_tol: 0.012
+  crush_ratio_range:
+  - 1.8
+  - 3.0
+train:
+  forecaster_eps: 200
+  val_eps: 30
+  forecaster_epochs: 5
+  betas:
+  - 1.0
+  - 0.5
+  eps_per_iter: 100
+  exec_noise: 0.03
+  p_null: 0.2
+  iter_epochs: 3
+  final_epochs: 4
+calibration:
+  dev_nominal_eps: 30
+  dev_pool_eps: 20
+reactive:
+  ratio: 0.4
+  prior_gain: 1.4
+eval:
+  n_nominal: 20
+  n_per_cell:
+    recoverable: 10
+    unrecoverable: 4
+  kinds:
+  - load
+  - push
+  - friction
+delta: 0.03
+workers: 10

@@ -1,0 +1,31 @@
+# H2-001A: local causal forecast-interference experiment (MuJoCo, CPU).
+# Pre-registered in docs/experiments/H2-001A_PROTOCOL.md. Do not edit after the
+# protocol commit without an amendment entry in the protocol.
+experiment_id: H2-001A
+latencies: [1, 3]          # sensing delay in control steps (50 ms steps). 1 = primary, 3 = secondary
+student_seeds: [0, 1, 2, 3, 4]
+env:
+  T: 80
+  min_lift_frac: 0.5
+  slip_tol: 0.012
+  crush_ratio_range: [1.8, 3.0]
+train:
+  forecaster_eps: 2000
+  val_eps: 150
+  forecaster_epochs: 40
+  betas: [1.0, 0.5, 0.25, 0.1, 0.0]   # DAgger: probability the teacher's action is executed
+  eps_per_iter: 600
+  exec_noise: 0.03
+  p_null: 0.2                          # forecast dropout for student P (makes condition C in-distribution)
+  iter_epochs: 10
+  final_epochs: 30
+calibration:
+  dev_nominal_eps: 150       # theta = 99th percentile of nominal per-step discrepancy (condition A)
+  dev_pool_eps: 100          # shuffle-control forecast pool, 4 slices per episode
+reactive: {ratio: 0.4, prior_gain: 1.4}   # tuned on development seeds before the protocol
+eval:
+  n_nominal: 200
+  n_per_cell: {recoverable: 150, unrecoverable: 40}
+  kinds: [load, push, friction]
+delta: 0.03
+workers: 10
